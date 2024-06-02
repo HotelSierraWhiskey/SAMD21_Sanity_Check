@@ -13,10 +13,15 @@ INCLUDE linkerscripts/memory_map.ld
 
 SECTIONS
 {
-	.text :
+	.nvic_table :
 	{
 		PROVIDE(u32_begin_text = .);
 		KEEP(*(.NVIC_table))
+	} >approm
+	.text :
+	{
+		/* PROVIDE(u32_begin_text = .); */
+		/* KEEP(*(.NVIC_table)) */
 		*(.text.* .text .gnu.linkonce.t.*)
 		*(.rodata.* .rodata .gnu.linkonce.r.*)
     } >approm
@@ -43,8 +48,8 @@ SECTIONS
 	.data :
 	{
 		PROVIDE(u32_begin_data = .);
+		*(NVIC_table)/* *(vector_table) */
 		*(.data.* .data)
-		*(vector_table)
 		PROVIDE(u32_end_data = .);
 	} >ram AT >approm
 

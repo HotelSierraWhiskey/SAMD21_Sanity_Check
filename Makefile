@@ -30,7 +30,7 @@ APP_CFLAGS = $(COMMON_FLAGS) \
 	-ffunction-sections \
 	-fdata-sections \
 
-APP_LDFLAGS = -T linkerscripts/app.ld -r
+APP_LDFLAGS = -T linkerscripts/app.ld
 
 APP_INC = -Icommon/cmsis/samd21a/include \
 	-Icommon \
@@ -38,7 +38,7 @@ APP_INC = -Icommon/cmsis/samd21a/include \
 APP_VPATH = $(APP_BASEDIR)/main.c \
 
 compile_app: $(APP_BUILD_DIR)
-	$(CC) -o $(APP_OUTFILE_PATH) $(APP_LDFLAGS) $(APP_CFLAGS) $(APP_INC) app/main.c
+	$(CC) -o $(APP_OUTFILE_PATH) $(APP_LDFLAGS) $(APP_CFLAGS) $(APP_INC) app/main.c common/io.c
 
 hex_app:
 	arm-none-eabi-objcopy -O ihex app/build/app.elf app/build/app.hex

@@ -2,3 +2,4 @@
 *.app
 *.elf
 prev_app.ld
+.vscode/
