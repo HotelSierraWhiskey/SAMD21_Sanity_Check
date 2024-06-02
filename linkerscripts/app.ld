@@ -16,7 +16,7 @@ SECTIONS
 	.text :
 	{
 		PROVIDE(u32_begin_text = .);
-		KEEP(*(.nvic_table))
+		KEEP(*(.NVIC_table))
 		*(.text.* .text .gnu.linkonce.t.*)
 		*(.rodata.* .rodata .gnu.linkonce.r.*)
     } >approm

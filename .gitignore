@@ -1,0 +1,4 @@
+*.hex
+*.app
+*.elf
+prev_app.ld
